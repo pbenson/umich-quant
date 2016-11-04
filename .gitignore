@@ -22,7 +22,6 @@ application.macosx
 
 # XCode C++
 *.hmap
-*.xcodeproj/
 *dgph
 *dgph~
 *info.dat
