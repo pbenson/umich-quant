@@ -7,3 +7,9 @@
 //
 
 #include "MarketScenario.hpp"
+
+MarketScenario::MarketScenario(int year, int month, int day):m_pricingDtae(year,month,day)
+{
+    
+    
+}
