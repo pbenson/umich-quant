@@ -10,6 +10,7 @@
 #include <math.h>       /* log */
 #include "MarketFactor.hpp"
 
+
 MarketFactor::MarketFactor(std::string name, const std::vector<double>& priceHistoryMostRecentFirst):m_name(name), m_prices(priceHistoryMostRecentFirst) {
     auto priceIt = m_prices.cbegin();
     double priceToday = *priceIt;
@@ -25,8 +26,9 @@ const std::string& MarketFactor::name() const{
     return m_name;
 }
 
-double MarketFactor::simulatedReturn(const std::vector<double>& weights) const{
-    return inner_product(cbegin(m_logReturns), cend(m_logReturns), cbegin(weights), 0.0)
+double MarketFactor::simulatedReturn(const MarketSimulation & sim) const{
+    //    const std::vector<double>& weights (sim.weights());
+    return inner_product(cbegin(m_logReturns), cend(m_logReturns), cbegin(sim.weights()), 0.0)
     //double inner_product(start x, end x, start y, initial value of the product)
     //sum=inner_product(x start, x end, y start,sum)  sum+=inner_product(x start, x end, y start)
     / sqrt(m_logReturns.size());

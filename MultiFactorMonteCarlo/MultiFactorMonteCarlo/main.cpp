@@ -32,7 +32,7 @@ int main(int argc, const char * argv[]) {
     
     int numberHistoricalReturns = market.numberHistoricalReturns();
     MarketSimulation simulation0(numberHistoricalReturns);
-    std::cout << "AAPL return = " << pApple->simulatedReturn(simulation0.weights()) << std::endl;
+    std::cout << "AAPL return = " << pApple->simulatedReturn(simulation0) << std::endl;
     MarketSimulation simulation1(numberHistoricalReturns);
     
     Portfolio portfolio;

@@ -57,7 +57,3 @@ DerivedData/
 *.vcxproj
 
 *.xcbkptlist
-
-MultiFactorMonteCarlo/MultiFactorMonteCarlo.xcodeproj/project.pbxproj
-
-*.pbxproj
