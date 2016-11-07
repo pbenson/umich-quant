@@ -43,7 +43,7 @@ int main(int argc, const char * argv[]) {
     
     
     //Pete: This is what we are working on next. Tt is missing implementation.
-//    const MarketScenario scenario(2016, 9, 30);
-//    std::cout << portfolio.value(scenario) << std::endl;
-    return 0;
+    const MarketScenario scenario(2016, 9, 30);
+    std::cout << portfolio.value(scenario) << std::endl;
+  return 0;
 }
