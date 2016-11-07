@@ -13,11 +13,12 @@
 
 MarketFactor::MarketFactor(std::string name, const std::vector<double>& priceHistoryMostRecentFirst):m_name(name), m_prices(priceHistoryMostRecentFirst) {
     auto priceIt = m_prices.cbegin();
-    double laterPrice = *priceIt;
+    double priceToday = *priceIt;
     ++priceIt;
     for(; priceIt < m_prices.cend(); ++priceIt) {
-        m_logReturns.push_back(log(laterPrice / *priceIt));
-        laterPrice = *priceIt;
+        double priceYesterday = *priceIt;
+        m_logReturns.push_back(log(priceToday / priceYesterday));
+        priceToday = priceYesterday;
     }
 }
 
