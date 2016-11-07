@@ -10,7 +10,9 @@
 
 void Portfolio::addPosition(const std::shared_ptr<Security> security, double positionSize) {
     m_positions.push_back(std::make_shared<Position>(security, positionSize));
+    
 }
+
 double Portfolio::value(const MarketScenario& scenario){
     return 3;
 }
