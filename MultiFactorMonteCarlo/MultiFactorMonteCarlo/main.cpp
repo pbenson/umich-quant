@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
     portfolio.addPosition(std::make_shared<Security>("AAPL"), 1000);
     portfolio.addPosition(std::make_shared<Security>("IBM"), 1500);
     portfolio.addPosition(std::make_shared<Security>("T"), 10000);
-    portfolio.addPosition(std::make_shared<Security>("NKE"), 5000);
+    portfolio.addPosition(std::make_shared<Security>("NKE"), 4000);
     
     
     //Pete: This is what we are working on next. Tt is missing implementation.
