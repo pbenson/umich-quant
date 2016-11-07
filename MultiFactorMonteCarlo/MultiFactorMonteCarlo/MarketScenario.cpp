@@ -8,8 +8,6 @@
 
 #include "MarketScenario.hpp"
 
-MarketScenario::MarketScenario(int year, int month, int day):m_pricingDtae(year,month,day)
-{
-    
-    
+MarketScenario::MarketScenario(int y, int m, int d):m_pricingDate(y,m,d){
 }
+

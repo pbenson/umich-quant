@@ -14,8 +14,8 @@ class MarketScenario {
 public:
     MarketScenario(int year, int month, int day);
 private:
-    boost::gregorian::date m_pricingDtae;
-    
+    boost::gregorian::date m_pricingDate;
 };
+
 
 #endif /* MarketScenario_hpp */
