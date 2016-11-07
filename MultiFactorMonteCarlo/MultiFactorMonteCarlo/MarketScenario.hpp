@@ -8,11 +8,14 @@
 
 #ifndef MarketScenario_hpp
 #define MarketScenario_hpp
+#include <boost/date_time.hpp>
 
 class MarketScenario {
 public:
     MarketScenario(int year, int month, int day);
-        
+private:
+    boost::gregorian::date m_pricingDate;
 };
+
 
 #endif /* MarketScenario_hpp */

@@ -8,6 +8,7 @@
 
 #ifndef Portfolio_hpp
 #define Portfolio_hpp
+#include "MarketScenario.hpp"
 
 #include "Position.hpp"
 #include <vector>
@@ -15,6 +16,7 @@
 class Portfolio {
 public:
     void addPosition(std::shared_ptr<Security>, double positionSize);
+    double value(const MarketScenario&);
     
 private:
     std::vector< std::shared_ptr<Position> > m_positions;

@@ -7,3 +7,7 @@
 //
 
 #include "MarketScenario.hpp"
+
+MarketScenario::MarketScenario(int y, int m, int d):m_pricingDate(y,m,d){
+}
+

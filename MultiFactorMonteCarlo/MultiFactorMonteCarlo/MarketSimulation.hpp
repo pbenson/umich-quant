@@ -20,7 +20,7 @@ public:
     const std::vector<double>& weights() const;
     
     static void resetSeed();
-    
+
 private:
     static std::default_random_engine generator;
     static std::normal_distribution<double> standardNormalDistribution;

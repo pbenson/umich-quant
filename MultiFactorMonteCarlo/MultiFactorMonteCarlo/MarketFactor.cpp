@@ -26,6 +26,8 @@ const std::string& MarketFactor::name() const{
 
 double MarketFactor::simulatedReturn(const std::vector<double>& weights) const{
     return inner_product(cbegin(m_logReturns), cend(m_logReturns), cbegin(weights), 0.0)
+    //double inner_product(start x, end x, start y, initial value of the product)
+    //sum=inner_product(x start, x end, y start,sum)  sum+=inner_product(x start, x end, y start)
     / sqrt(m_logReturns.size());
 }
 
