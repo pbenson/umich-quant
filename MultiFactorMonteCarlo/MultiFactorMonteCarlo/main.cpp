@@ -26,8 +26,6 @@ int main(int argc, const char * argv[]) {
         return 1; //file not open
     }
     Market market(inputPrices);
-    //    market.pricingDate(boost::gregorian::date(boost::gregorian::from_simple_string("2016-09-30")));
-    
     
     const auto pApple = market.marketFactor("AAPL");
     std::cout << "AAPL variance = " << pApple->variance() << std::endl;
