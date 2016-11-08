@@ -8,6 +8,6 @@
 
 #include "MarketScenario.hpp"
 
-MarketScenario::MarketScenario(int y, int m, int d):m_pricingDate(y,m,d){
+MarketScenario::MarketScenario(const Market& market, int y, int m, int d):m_market(market), m_pricingDate(y,m,d){
 }
 

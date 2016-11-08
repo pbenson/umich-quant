@@ -17,7 +17,7 @@
 class Portfolio {
 public:
     void addPosition(std::shared_ptr<Security>, double positionSize);
-    double value(const MarketScenario&);
+    double value(const MarketScenario&) const;
 
 private:
     std::vector< std::shared_ptr<Position> > m_positions;
