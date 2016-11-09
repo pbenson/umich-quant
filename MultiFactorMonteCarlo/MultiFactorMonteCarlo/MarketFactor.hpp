@@ -20,6 +20,7 @@ public:
     const std::string& name() const;
     double simulatedReturn(const MarketSimulation&) const;
     double variance() const;
+    double mostRecentPrice() const;
     
 private:
     std::string m_name;

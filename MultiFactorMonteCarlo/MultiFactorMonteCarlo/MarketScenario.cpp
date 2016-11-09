@@ -10,4 +10,7 @@
 
 MarketScenario::MarketScenario(const Market& market, int y, int m, int d):m_market(market), m_pricingDate(y,m,d){
 }
+double MarketScenario::price(const std::string& factorName) const{
+    return m_market.marketFactor(factorName)->mostRecentPrice();
+}
 

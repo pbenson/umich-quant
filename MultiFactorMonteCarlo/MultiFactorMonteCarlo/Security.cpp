@@ -12,5 +12,5 @@ Security::Security(const std::string& name):m_name(name){
 }
 
 double Security::valueOfOneUnit(const MarketScenario& scenario) const {
-    return 1;
+    return scenario.price(m_name);
 }
