@@ -8,7 +8,11 @@
 
 #include "Position.hpp"
 
-Position::Position(const std::shared_ptr<Security> security, double positionSize):
-m_security(security),m_positionSize(positionSize) {
-    
+Position::Position(const std::shared_ptr<Security> pSecurity, double positionSize):
+m_pSecurity(pSecurity),m_positionSize(positionSize) {
+}
+
+
+double Position::value(const MarketScenario& scenario) const{
+     return m_pSecurity->valueOfOneUnit(scenario) * m_positionSize;
 }

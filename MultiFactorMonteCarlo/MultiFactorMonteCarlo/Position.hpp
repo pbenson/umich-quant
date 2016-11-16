@@ -10,13 +10,15 @@
 #define Position_hpp
 
 #include "Security.hpp"
+#include "MarketScenario.hpp"
 
 class Position{
 public:
     Position(const std::shared_ptr<Security>, double positionSize);
-    
+    double value(const MarketScenario&) const;
+   
 private:
-    const std::shared_ptr<Security> m_security;
+    const std::shared_ptr<Security> m_pSecurity;
     const double m_positionSize;
 };
 

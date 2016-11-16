@@ -6,6 +6,7 @@
 //  Copyright © 2016 Peter Benson. All rights reserved.
 //
 
+#include <numeric>
 #include "Portfolio.hpp"
 
 void Portfolio::addPosition(const std::shared_ptr<Security> security, double positionSize) {
@@ -13,8 +14,12 @@ void Portfolio::addPosition(const std::shared_ptr<Security> security, double pos
     
 }
 
-double Portfolio::value(const MarketScenario& scenario){
-    return 3;
+double Portfolio::value(const MarketScenario& scenario) const{
+    double value = 0;
+    for(auto pPosition : m_positions) {
+        value += pPosition->value(scenario);
+    }
+    return value;
 }
 
 double Portfolio::value(const MarketScenario& scenario, const MarketSimulation& sim){

@@ -17,8 +17,12 @@
 class Portfolio {
 public:
     void addPosition(std::shared_ptr<Security>, double positionSize);
+<<<<<<< HEAD
     double value(const MarketScenario&);
     double value(const MarketScenario&, const MarketSimulation&);
+=======
+    double value(const MarketScenario&) const;
+>>>>>>> pbenson/master
 
 private:
     std::vector< std::shared_ptr<Position> > m_positions;

@@ -50,7 +50,7 @@ Market::Market(std::ifstream& input) {
         ++m_numberReturns;
     }
     
-    for(int factorIndex = 0; factorIndex < marketFactorNames.size(); ++factorIndex ) {
+    for(size_t factorIndex = 0; factorIndex < marketFactorNames.size(); ++factorIndex ) {
         const std::string& factorName = marketFactorNames[factorIndex];
         m_nameToMarketFactorMap[factorName] =  std::make_shared<MarketFactor>(factorName, pricesForFactors[factorIndex]) ;
     }

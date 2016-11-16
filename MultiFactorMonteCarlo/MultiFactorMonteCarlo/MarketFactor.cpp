@@ -38,3 +38,7 @@ double MarketFactor::variance() const{
     return inner_product(cbegin(m_logReturns), cend(m_logReturns), cbegin(m_logReturns), 0.0)
     / m_logReturns.size();
 }
+
+double MarketFactor::mostRecentPrice() const{
+    return m_prices[0];
+}
