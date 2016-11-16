@@ -22,6 +22,6 @@ double Portfolio::value(const MarketScenario& scenario) const{
     return value;
 }
 
-double Portfolio::value(const MarketScenario& scenario, const MarketSimulation& sim){
+double Portfolio::value(const MarketScenario& scenario, const MarketSimulation& sim) const{
     return 3;
 }
