@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
             endingLineNumber = "29"
-            landmarkName = "MarketFactor::simulatedReturn(const std::vector&lt;double&gt;&amp; weights)"
+            landmarkName = "MarketFactor::MarketFactor(std::string name, const std::vector&lt;double&gt;&amp; priceHistoryMostRecentFirst)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "MarketFactor::variance()"
+            landmarkName = "MarketFactor::MarketFactor(std::string name, const std::vector&lt;double&gt;&amp; priceHistoryMostRecentFirst)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

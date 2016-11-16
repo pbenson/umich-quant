@@ -19,11 +19,13 @@ public:
     const std::vector<double>& weights() const;
     
     static void resetSeed();
+    //static variable works for all of this class
 
 private:
     static std::default_random_engine generator;
+    //This is a random number engine class that generates pseudo-random numbers
     static std::normal_distribution<double> standardNormalDistribution;
-    
+    //Generates random numbers according to the Normal (or Gaussian) random number distribution
     std::vector<double> m_weights;
 };
 
