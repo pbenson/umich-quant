@@ -16,3 +16,7 @@ m_pSecurity(pSecurity),m_positionSize(positionSize) {
 double Position::value(const MarketScenario& scenario) const{
      return m_pSecurity->valueOfOneUnit(scenario) * m_positionSize;
 }
+
+double Position::value(const MarketScenario& scenario, const MarketSimulation& sim) const{
+   return m_pSecurity->simValueOfOneUnit(scenario, sim) * m_positionSize;
+}
