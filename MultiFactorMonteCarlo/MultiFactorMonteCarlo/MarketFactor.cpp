@@ -12,10 +12,11 @@
 
 MarketFactor::MarketFactor(std::string name, const std::vector<double>& priceHistoryMostRecentFirst):m_name(name), m_prices(priceHistoryMostRecentFirst) {
     auto priceIt = m_prices.cbegin();
-    double laterPrice = *priceIt;
+    //Returns a const_iterator pointing to the first element in the container.
+    double laterPrice = *priceIt;//back to the object
     ++priceIt;
     for(; priceIt < m_prices.cend(); ++priceIt) {
-        m_logReturns.push_back(laterPrice / *priceIt);
+        m_logReturns.push_back(laterPrice / *priceIt);//????1.why no log? 2. why always first price?
         
     }
 }

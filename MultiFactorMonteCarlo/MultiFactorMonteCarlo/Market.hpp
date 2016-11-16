@@ -20,7 +20,10 @@ public:
     
     void pricingDate(const boost::gregorian::date&);
     const std::shared_ptr<MarketFactor> marketFactor(const std::string& factorName) const;
+    // std::shared_<MarketFactor> is the type of return value
+    // shared_ptr has same function as pointer but will count how many ptr for one object
     int numberHistoricalReturns() const;
+    // last const means this function only can read the variable but cannot change the value of variable
     
 private:
     int m_numberReturns;
