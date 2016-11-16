@@ -11,13 +11,14 @@
 #include "MarketScenario.hpp"
 
 #include "Position.hpp"
-#include "MarketScenario.hpp"
+#include "MarketSimulation.hpp"
 #include <vector>
 
 class Portfolio {
 public:
     void addPosition(std::shared_ptr<Security>, double positionSize);
     double value(const MarketScenario&) const;
+    double value(const MarketScenario&, const MarketSimulation&) const;
 
 private:
     std::vector< std::shared_ptr<Position> > m_positions;
