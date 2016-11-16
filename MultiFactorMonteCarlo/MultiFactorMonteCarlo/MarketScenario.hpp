@@ -14,7 +14,7 @@
 class MarketScenario {
 public:
     MarketScenario(const Market&, int year, int month, int day);
-    double price(const std::string& factorname) const;
+    double price(const MarketFactor& factor) const;
 private:
     const Market& m_market;
     boost::gregorian::date m_pricingDate;

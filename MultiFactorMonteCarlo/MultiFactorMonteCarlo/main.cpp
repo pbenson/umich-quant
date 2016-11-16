@@ -36,14 +36,15 @@ int main(int argc, const char * argv[]) {
     MarketSimulation simulation1(numberHistoricalReturns);
     
     Portfolio portfolio;
-    portfolio.addPosition(std::make_shared<Security>("AAPL"), 1000);
-    portfolio.addPosition(std::make_shared<Security>("IBM"), 1500);
-    portfolio.addPosition(std::make_shared<Security>("T"), 10000);
-    portfolio.addPosition(std::make_shared<Security>("NKE"), 3000);
+    portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("AAPL")), 1000);
+    portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("IBM")), 1500);
+    portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("T")), 10000);
+    portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("NKE")), 3000);
     
     
     //Pete: This is what we are working on next. Tt is missing implementation.
     const MarketScenario scenario(market, 2016, 9, 30);
     std::cout << portfolio.value(scenario) << std::endl;
+    std::cout << portfolio.value(scenario,simulation1) << std::endl;
     return 0;
 }
