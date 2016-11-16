@@ -32,7 +32,7 @@ int main(int argc, const char * argv[]) {
     
     int numberHistoricalReturns = market.numberHistoricalReturns();
     MarketSimulation simulation0(numberHistoricalReturns);
-    std::cout << "AAPL return = " << pApple->simulatedReturn(simulation0.weights()) << std::endl;
+    std::cout << "AAPL return = " << pApple->simulatedReturn(simulation0) << std::endl;
     MarketSimulation simulation1(numberHistoricalReturns);
     
     Portfolio portfolio;
@@ -43,7 +43,7 @@ int main(int argc, const char * argv[]) {
     
     
     //Pete: This is what we are working on next. Tt is missing implementation.
-    const MarketScenario scenario(2016, 9, 30);
+    const MarketScenario scenario(market, 2016, 9, 30);
     std::cout << portfolio.value(scenario) << std::endl;
     return 0;
 }

@@ -11,14 +11,16 @@
 
 #include <string>
 #include <vector>
+#include "MarketSimulation.hpp"
 
 class MarketFactor {
 public:
     MarketFactor(std::string name, const std::vector<double>& priceHistoryMostRecentFirst);
     
     const std::string& name() const;
-    double simulatedReturn(const std::vector<double>& weights) const;
+    double simulatedReturn(const MarketSimulation&) const;
     double variance() const;
+    double mostRecentPrice() const;
     
 private:
     std::string m_name;

@@ -11,7 +11,6 @@
 
 #include <stdio.h>
 #include <random>
-#include "Market.hpp"
 
 class MarketSimulation {
 public:
