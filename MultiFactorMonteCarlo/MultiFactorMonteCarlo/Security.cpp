@@ -8,9 +8,13 @@
 
 #include "Security.hpp"
 
-Security::Security(const std::string& name):m_name(name){
+Security::Security(const MarketFactor& factor):m_factor(factor){
 }
 
 double Security::valueOfOneUnit(const MarketScenario& scenario) const {
-    return scenario.price(m_name);
+    return scenario.price(m_factor);
+}
+
+double Security::simValueOfOneUnit(const MarketScenario& scenario, const MarketSimulation& sim) const {
+    return scenario.price(m_factor)*exp(m_factor.simulatedReturn(sim));
 }

@@ -16,6 +16,7 @@ class Position{
 public:
     Position(const std::shared_ptr<Security>, double positionSize);
     double value(const MarketScenario&) const;
+    double value(const MarketScenario& scenario, const MarketSimulation& sim) const;
    
 private:
     const std::shared_ptr<Security> m_pSecurity;

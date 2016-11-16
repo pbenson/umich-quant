@@ -23,5 +23,9 @@ double Portfolio::value(const MarketScenario& scenario) const{
 }
 
 double Portfolio::value(const MarketScenario& scenario, const MarketSimulation& sim) const{
-    return 3;
+    double value = 0;
+    for(auto pPosition : m_positions) {
+        value += pPosition->value(scenario,sim);
+    }
+    return value;
 }
