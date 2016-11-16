@@ -16,3 +16,7 @@ void Portfolio::addPosition(const std::shared_ptr<Security> security, double pos
 double Portfolio::value(const MarketScenario& scenario){
     return 3;
 }
+
+double Portfolio::value(const MarketScenario& scenario, const MarketSimulation& sim){
+    return 3;
+}
