@@ -16,11 +16,12 @@ Market::Market(std::ifstream& input) {
     getline(input, header, '\r');
     std::stringstream headerStream(header);
     std::string marketFactorName;
+    
     //read first column, which should be Date column header, so ignore
     getline(headerStream, marketFactorName, ',');
     
     //now loop through all factor names, create factors and insert into map
-    std::vector<std::string> marketFactorNames;//use later in function to add data
+    std::vector<std::string> marketFactorNames; //use later in function to add data
     while(getline(headerStream, marketFactorName, ',')) {
         marketFactorNames.push_back(marketFactorName);
     }
@@ -31,6 +32,7 @@ Market::Market(std::ifstream& input) {
         auto priceVector = std::vector<double>();
         pricesForFactors.push_back(priceVector);
     }
+    
     //now read rest of file, a line at a time
     std::string row;
     m_numberReturns = -1;
@@ -40,19 +42,19 @@ Market::Market(std::ifstream& input) {
         
         //read date column, create and store boost date
         getline(rowStream, dateString, ',');
-        boost::trim(dateString);
-        m_dates.push_back(boost::gregorian::from_undelimited_string(dateString));
+        boost::trim(dateString); //When parsing the input from a user, strings often have unwanted leading or trailing characters. To get rid of them, we need trim functions
+        m_dates.push_back(boost::gregorian::from_undelimited_string(dateString));//From iso type date string where with order year-month-day eg: 20020125
         std::string priceString;
         for(auto&  priceVector :  pricesForFactors) {
             getline(rowStream, priceString, ',');
-            priceVector.push_back(stod(priceString));
+            priceVector.push_back(stod(priceString));//Convert string to double
         }
         ++m_numberReturns;
     }
     
     for(size_t factorIndex = 0; factorIndex < marketFactorNames.size(); ++factorIndex ) {
         const std::string& factorName = marketFactorNames[factorIndex];
-        m_nameToMarketFactorMap[factorName] =  std::make_shared<MarketFactor>(factorName, pricesForFactors[factorIndex]) ;
+        m_nameToMarketFactorMap[factorName] =  std::make_shared<MarketFactor>(factorName, pricesForFactors[factorIndex]) ;//pair the map
     }
     
 
@@ -68,6 +70,6 @@ int Market::numberHistoricalReturns() const {
 }
 
 void Market::pricingDate(const boost::gregorian::date& pricingDate)  {
-    m_pricingDate = pricingDate;
+    m_pricingDate = pricingDate;//?????????
 }
 

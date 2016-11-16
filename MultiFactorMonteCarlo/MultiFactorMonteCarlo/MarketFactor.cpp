@@ -13,7 +13,8 @@
 
 MarketFactor::MarketFactor(std::string name, const std::vector<double>& priceHistoryMostRecentFirst):m_name(name), m_prices(priceHistoryMostRecentFirst) {
     auto priceIt = m_prices.cbegin();
-    double priceToday = *priceIt;
+        //Returns a const_iterator pointing to the first element in the container.
+    double priceToday = *priceIt;//back to the object
     ++priceIt;
     for(; priceIt < m_prices.cend(); ++priceIt) {
         double priceYesterday = *priceIt;

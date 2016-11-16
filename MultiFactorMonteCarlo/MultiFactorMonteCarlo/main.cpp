@@ -28,7 +28,7 @@ int main(int argc, const char * argv[]) {
     Market market(inputPrices);
     
     const auto pApple = market.marketFactor("AAPL");
-    std::cout << "AAPL variance = " << pApple->variance() << std::endl;
+    std::cout << "AAPL variance = " << pApple->variance() << std::endl; //td::endl---flushes the output buffer
     
     int numberHistoricalReturns = market.numberHistoricalReturns();
     MarketSimulation simulation0(numberHistoricalReturns);
