@@ -74,9 +74,9 @@
 		C749914F1DC17EB200B8ACA0 /* TestMultiFactorMonteCarlo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestMultiFactorMonteCarlo; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74991511DC17EB200B8ACA0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C74991561DC180A800B8ACA0 /* testMarket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testMarket.cpp; sourceTree = "<group>"; };
-		C74991601DC1849C00B8ACA0 /* IBM_T_NKE_AAPL_20141001-20160930.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "IBM_T_NKE_AAPL_20141001-20160930.csv"; sourceTree = "<group>"; };
 		C74991641DC18C2F00B8ACA0 /* testMarketFactor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testMarketFactor.cpp; sourceTree = "<group>"; };
 		C74991661DC18D4B00B8ACA0 /* testMarketSimulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testMarketSimulation.cpp; sourceTree = "<group>"; };
+		C7ECCA0D1DEE0A5E0010054D /* IBM_T_NKE_AAPL_20141001-20160930.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "IBM_T_NKE_AAPL_20141001-20160930.csv"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +120,6 @@
 			children = (
 				C7182DA61DC0244500BD0F40 /* IBM_T_NKE_AAPL_20141001-20160930.csv */,
 				C7182D9F1DC0242A00BD0F40 /* main.cpp */,
-				09BE3E7F1DE4D8A500DD8122 /* PortfolioSimResult.cpp */,
-				09BE3E801DE4D8A500DD8122 /* PortfolioSimResult.hpp */,
 				C70296711DC558C0002C0037 /* MarketScenario.cpp */,
 				C70296721DC558C0002C0037 /* MarketScenario.hpp */,
 				C7182DA71DC0244500BD0F40 /* Market.cpp */,
@@ -136,6 +134,8 @@
 				C70296761DC559D8002C0037 /* Position.hpp */,
 				C702966D1DC55899002C0037 /* Security.cpp */,
 				C702966E1DC55899002C0037 /* Security.hpp */,
+				09BE3E7F1DE4D8A500DD8122 /* PortfolioSimResult.cpp */,
+				09BE3E801DE4D8A500DD8122 /* PortfolioSimResult.hpp */,
 			);
 			path = MultiFactorMonteCarlo;
 			sourceTree = "<group>";
@@ -143,7 +143,7 @@
 		C74991501DC17EB200B8ACA0 /* TestMultiFactorMonteCarlo */ = {
 			isa = PBXGroup;
 			children = (
-				C74991601DC1849C00B8ACA0 /* IBM_T_NKE_AAPL_20141001-20160930.csv */,
+				C7ECCA0D1DEE0A5E0010054D /* IBM_T_NKE_AAPL_20141001-20160930.csv */,
 				C74991451DC16A1400B8ACA0 /* catch.hpp */,
 				C74991511DC17EB200B8ACA0 /* main.cpp */,
 				C74991561DC180A800B8ACA0 /* testMarket.cpp */,
