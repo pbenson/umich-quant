@@ -31,7 +31,7 @@ double Portfolio::value(const MarketScenario& scenario, const MarketSimulation& 
     return value;
 }
 
-std::vector<double> Portfolio::profits(const MarketScenario& scenario, int numOfHistoricalReturns, int numOfSims) const{
+std::vector<double> Portfolio::profits(const MarketScenario& scenario, int numOfHistoricalReturns, size_t numOfSims) const{
     std::vector<double> profit_sim;
     
     const double todaysValue = value(scenario);

@@ -14,10 +14,13 @@
 
 class PortfolioSimResult{
 public:
+    PortfolioSimResult(const std::vector<double>& profits);
+    
+    double var(double confidence);
+    double expectedShortfall(double confidence);
     
 private:
-    const double portfolioProfit;
-    const std::vector<double> positionProfits;
+    std::vector<double> m_profits;
 };
 
 #endif /* PortfolioSimResult_hpp */
