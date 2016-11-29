@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09BE3E811DE4D8A500DD8122 /* PortfolioSimResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09BE3E7F1DE4D8A500DD8122 /* PortfolioSimResult.cpp */; };
 		C702966B1DC4D34E002C0037 /* Portfolio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70296691DC4D34E002C0037 /* Portfolio.cpp */; };
 		C702966C1DC4D34E002C0037 /* Portfolio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70296691DC4D34E002C0037 /* Portfolio.cpp */; };
 		C702966F1DC55899002C0037 /* Security.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C702966D1DC55899002C0037 /* Security.cpp */; };
@@ -50,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		09BE3E7F1DE4D8A500DD8122 /* PortfolioSimResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PortfolioSimResult.cpp; sourceTree = "<group>"; };
+		09BE3E801DE4D8A500DD8122 /* PortfolioSimResult.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PortfolioSimResult.hpp; sourceTree = "<group>"; };
 		C70296691DC4D34E002C0037 /* Portfolio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Portfolio.cpp; sourceTree = "<group>"; };
 		C702966A1DC4D34E002C0037 /* Portfolio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Portfolio.hpp; sourceTree = "<group>"; };
 		C702966D1DC55899002C0037 /* Security.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Security.cpp; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 			children = (
 				C7182DA61DC0244500BD0F40 /* IBM_T_NKE_AAPL_20141001-20160930.csv */,
 				C7182D9F1DC0242A00BD0F40 /* main.cpp */,
+				09BE3E7F1DE4D8A500DD8122 /* PortfolioSimResult.cpp */,
+				09BE3E801DE4D8A500DD8122 /* PortfolioSimResult.hpp */,
 				C70296711DC558C0002C0037 /* MarketScenario.cpp */,
 				C70296721DC558C0002C0037 /* MarketScenario.hpp */,
 				C7182DA71DC0244500BD0F40 /* Market.cpp */,
@@ -229,6 +234,7 @@
 			files = (
 				C7182DA01DC0242A00BD0F40 /* main.cpp in Sources */,
 				C7182DAE1DC0244500BD0F40 /* MarketFactor.cpp in Sources */,
+				09BE3E811DE4D8A500DD8122 /* PortfolioSimResult.cpp in Sources */,
 				C70296771DC559D8002C0037 /* Position.cpp in Sources */,
 				C7182DAF1DC0244500BD0F40 /* MarketSimulation.cpp in Sources */,
 				C70296731DC558C0002C0037 /* MarketScenario.cpp in Sources */,
