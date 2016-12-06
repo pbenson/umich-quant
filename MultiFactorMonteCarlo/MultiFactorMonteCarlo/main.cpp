@@ -47,14 +47,9 @@ int main(int argc, const char * argv[]) {
     
     const MarketScenario scenario(market, 2016, 9, 30);
     size_t numSims = 9999;
-    std::vector<PortfolioSimResult> positionResults = portfolio.simResultsByPosition(scenario, numberHistoricalReturns,numSims);
-    
+    std::vector<PortfolioSimResult> positionResults = portfolio.simResultsByPosition(scenario, numberHistoricalReturns,numSims);    
     PortfolioSimResult portfolioResults(positionResults);
-    
-    PortfolioSimResult result(portfolio.profits(scenario,numberHistoricalReturns, numSims));
-    
-    std::cout << "95% VaR = " << result.var(0.95)<<std::endl;
-    
-    std::cout << "Expected Shortfall = " << result.expectedShortfall(0.95) << std::endl;
+    std::cout << "95% VaR = " << portfolioResults.var(0.95)<<std::endl;
+    std::cout << "Expected Shortfall = " << portfolioResults.expectedShortfall(0.95) << std::endl;
     return 0;
 }
