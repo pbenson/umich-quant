@@ -8,6 +8,17 @@
 
 #include "PortfolioSimResult.hpp"
 PortfolioSimResult::PortfolioSimResult(const std::vector<double>& profits):m_profits(profits){}
+PortfolioSimResult::PortfolioSimResult(){}
+PortfolioSimResult::PortfolioSimResult(std::vector<PortfolioSimResult> positionResults){
+    size_t numResults = positionResults[0].numResults();
+    for(int simIndex = 0; simIndex < numResults; ++simIndex){
+        double total = 0;
+        for(auto result:positionResults){
+            total += result.m_profits[simIndex];
+        }
+        m_profits.push_back(total);
+    }
+}
 
 double PortfolioSimResult::var(double confidence){
     std::sort(m_profits.begin(),m_profits.end());
@@ -23,4 +34,12 @@ double PortfolioSimResult::expectedShortfall(double confidence){
         expectedShortfall += m_profits[i];
     }
     return -expectedShortfall / (varIndex + 1);
+}
+
+size_t PortfolioSimResult::numResults(){
+    return (m_profits.size());
+}
+
+void PortfolioSimResult::push_back(const double profit){
+    m_profits.push_back(profit);
 }

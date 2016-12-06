@@ -43,3 +43,20 @@ std::vector<double> Portfolio::profits(const MarketScenario& scenario, int numOf
         
     return profit_sim;
 }
+
+std::vector<PortfolioSimResult> Portfolio::simResultsByPosition(const MarketScenario& scenario, int numOfHistoricalReturns, size_t numOfSims) const{
+    std::vector<PortfolioSimResult> results(m_positions.size());
+    for(int simIndex = 0; simIndex < numOfSims; ++simIndex)
+    {
+        MarketSimulation sim(numOfHistoricalReturns);
+        int PositionIndex = 0;
+        for(auto pPosition : m_positions){
+            
+            double pAndL = pPosition->value(scenario,sim)-pPosition->value(scenario);
+            results[PositionIndex++].push_back(pAndL);
+            
+        }
+    }
+        
+    return results;
+}
