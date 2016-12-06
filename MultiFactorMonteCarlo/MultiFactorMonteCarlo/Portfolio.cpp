@@ -8,6 +8,7 @@
 
 #include <numeric>
 #include "Portfolio.hpp"
+#include "MarketSimulation.hpp"
 
 void Portfolio::addPosition(const std::shared_ptr<Security> security, double positionSize) {
     m_positions.push_back(std::make_shared<Position>(security, positionSize));
@@ -28,4 +29,17 @@ double Portfolio::value(const MarketScenario& scenario, const MarketSimulation& 
         value += pPosition->value(scenario,sim);
     }
     return value;
+}
+
+std::vector<double> Portfolio::profits(const MarketScenario& scenario, int numOfHistoricalReturns, size_t numOfSims) const{
+    std::vector<double> profit_sim;
+    
+    const double todaysValue = value(scenario);
+    for(int i = 0; i < numOfSims; ++i){
+        MarketSimulation sim(numOfHistoricalReturns);
+        const double tomorrowsValue = value(scenario,sim);
+        profit_sim.push_back(tomorrowsValue-todaysValue);
+    }
+        
+    return profit_sim;
 }

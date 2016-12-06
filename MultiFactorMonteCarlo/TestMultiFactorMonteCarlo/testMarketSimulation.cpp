@@ -6,8 +6,10 @@
 //  Copyright © 2016 Peter Benson. All rights reserved.
 //
 
+#include <fstream>
 #include "catch.hpp"
 
+#include "Market.hpp"
 #include "MarketSimulation.hpp"
 
 TEST_CASE("Testing MarketSimulation Class") {
@@ -36,20 +38,20 @@ TEST_CASE("Testing MarketSimulation Class") {
     SECTION("creating a market simulation") {
         INFO("first simulation") // Only appears on a FAIL
         MarketSimulation simulation(numberHistoricalReturns);
-        REQUIRE(pApple->simulatedReturn(simulation.weights()) == Approx(-0.0197994437));
+        REQUIRE(pApple->simulatedReturn(simulation) == Approx(-0.0197994437));
     }
     
     SECTION("creating 2nd market simulation") {
         INFO("2nd simulation") // Only appears on a FAIL
         MarketSimulation simulation(numberHistoricalReturns);
-        REQUIRE(pApple->simulatedReturn(simulation.weights()) == Approx(0.0440606219));
+        REQUIRE(pApple->simulatedReturn(simulation) == Approx(0.0440606219));
     }
     
     SECTION("resetting random seed") {
         INFO("reset seed") // Only appears on a FAIL
         MarketSimulation::resetSeed();
         MarketSimulation simulation(numberHistoricalReturns);
-        REQUIRE(pApple->simulatedReturn(simulation.weights()) == Approx(-0.0197994437));
+        REQUIRE(pApple->simulatedReturn(simulation) == Approx(-0.0197994437));
     }
     
 }

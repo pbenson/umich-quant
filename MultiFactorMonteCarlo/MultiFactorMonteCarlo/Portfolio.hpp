@@ -19,6 +19,7 @@ public:
     void addPosition(std::shared_ptr<Security>, double positionSize);
     double value(const MarketScenario&) const;
     double value(const MarketScenario&, const MarketSimulation&) const;
+    std::vector<double> profits(const MarketScenario&,int numOfHistoricalReturns, size_t numOfSims) const;
 
 private:
     std::vector< std::shared_ptr<Position> > m_positions;

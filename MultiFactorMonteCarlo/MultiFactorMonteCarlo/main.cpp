@@ -19,6 +19,9 @@
 #include "Security.hpp"
 #include "MarketScenario.hpp"
 #include "MarketSimulation.hpp"
+#include "PortfolioSimResult.hpp"
+
+#include <algorithm>
 
 int main(int argc, const char * argv[]) {
     std::ifstream inputPrices("IBM_T_NKE_AAPL_20141001-20160930.csv");
@@ -42,9 +45,12 @@ int main(int argc, const char * argv[]) {
     portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("NKE")), 3000);
     
     
-    //Pete: This is what we are working on next. Tt is missing implementation.
     const MarketScenario scenario(market, 2016, 9, 30);
-    std::cout << portfolio.value(scenario) << std::endl;
-    std::cout << portfolio.value(scenario,simulation1) << std::endl;
+    size_t numSims = 9999;
+    PortfolioSimResult result(portfolio.profits(scenario,numberHistoricalReturns, numSims));
+    
+    std::cout << "95% VaR = " << result.var(0.95)<<std::endl;
+    
+    std::cout << "Expected Shortfall = " << result.expectedShortfall(0.95) << std::endl;
     return 0;
 }
