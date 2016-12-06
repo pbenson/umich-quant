@@ -15,9 +15,13 @@
 class PortfolioSimResult{
 public:
     PortfolioSimResult(const std::vector<double>& profits);
+    PortfolioSimResult();
+    PortfolioSimResult(std::vector<PortfolioSimResult> positionResults);
     
     double var(double confidence);
     double expectedShortfall(double confidence);
+    void push_back(const double profit);
+    size_t numResults();
     
 private:
     std::vector<double> m_profits;
