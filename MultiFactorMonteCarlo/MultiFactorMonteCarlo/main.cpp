@@ -42,14 +42,20 @@ int main(int argc, const char * argv[]) {
     portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("AAPL")), 1000);
     portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("IBM")), 1500);
     portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("T")), 10000);
-    portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("NKE")), 3000);
+    portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("NKE")), 2740);
     
     
     const MarketScenario scenario(market, 2016, 9, 30);
     size_t numSims = 9999;
+    double quantile=0.05;
+    double confidence=1-quantile;
     std::vector<PortfolioSimResult> positionResults = portfolio.simResultsByPosition(scenario, numberHistoricalReturns,numSims);    
     PortfolioSimResult portfolioResults(positionResults);
-    std::cout << "95% VaR = " << portfolioResults.var(0.95)<<std::endl;
-    std::cout << "Expected Shortfall = " << portfolioResults.expectedShortfall(0.95) << std::endl;
+    std::cout << "95% VaR = " << portfolioResults.var(confidence)<<std::endl;
+    std::cout << "Expected Shortfall = " << portfolioResults.expectedShortfall(confidence) << std::endl;
+    std::vector<int> portfolioVarEvents(portfolioResults.varEvents(quantile));
+    for(auto result:positionResults){
+        std::cout << result.averagePnLonEvents(portfolioVarEvents) << std::endl;
+    }
     return 0;
 }
