@@ -42,20 +42,24 @@ int main(int argc, const char * argv[]) {
     portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("AAPL")), 1000);
     portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("IBM")), 1500);
     portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("T")), 10000);
-    portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("NKE")), 2740);
+    portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("NKE")), 3000);
     
     
     const MarketScenario scenario(market, 2016, 9, 30);
     size_t numSims = 9999;
-    double quantile=0.05;
-    double confidence=1-quantile;
-    std::vector<PortfolioSimResult> positionResults = portfolio.simResultsByPosition(scenario, numberHistoricalReturns,numSims);    
+    std::vector<PortfolioSimResult> positionResults = portfolio.simResultsByPosition(scenario, numberHistoricalReturns,numSims);
     PortfolioSimResult portfolioResults(positionResults);
-    std::cout << "95% VaR = " << portfolioResults.var(confidence)<<std::endl;
-    std::cout << "Expected Shortfall = " << portfolioResults.expectedShortfall(confidence) << std::endl;
+    double quantile = 0.025;
+    double percent = quantile * 100;
+    std::cout << percent << "% quantile VaR = " << portfolioResults.var(quantile)<<std::endl;
+    std::cout << percent << "% quantile ES = " << portfolioResults.expectedShortfall(quantile) << std::endl;
     std::vector<int> portfolioVarEvents(portfolioResults.varEvents(quantile));
+    double totalES = 0;
     for(auto result:positionResults){
-        std::cout << result.averagePnLonEvents(portfolioVarEvents) << std::endl;
+        double incrementalES = -result.averagePnLonEvents(portfolioVarEvents);
+        totalES += incrementalES;
+        std::cout << incrementalES << std::endl;
     }
+    std::cout << "Sum of IES = " << totalES << std::endl;
     return 0;
 }

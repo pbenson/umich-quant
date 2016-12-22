@@ -18,8 +18,8 @@ public:
     PortfolioSimResult();
     PortfolioSimResult(const std::vector<PortfolioSimResult>& positionResults);
     
-    double var(double confidence) const;
-    double expectedShortfall(double confidence) const;
+    double var(double quantile) const;
+    double expectedShortfall(double quantile) const;
     std::vector<int> varEvents(double quantile) const;
     double averagePnLonEvents(std::vector<int> portfolioVarEvents) const;
     void push_back(const double profit);

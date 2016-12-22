@@ -20,17 +20,17 @@ PortfolioSimResult::PortfolioSimResult(const std::vector<PortfolioSimResult>& po
     }
 }
 
-double PortfolioSimResult::var(double confidence) const{
+double PortfolioSimResult::var(double quantile) const{
     std::vector<double> profits(m_profits);
     std::sort(profits.begin(),profits.end());
-    size_t varIndex = (int)(profits.size() + 1) * (1 - confidence) - 1;
+    size_t varIndex = (int)(profits.size() + 1) * quantile - 1;
     return -profits[varIndex];
 }
 
-double PortfolioSimResult::expectedShortfall(double confidence) const{
+double PortfolioSimResult::expectedShortfall(double quantile) const{
     std::vector<double> profits(m_profits);
     std::sort(profits.begin(),profits.end());
-    size_t varIndex = (int)(profits.size() + 1) * (1 - confidence) - 1;
+    size_t varIndex = (int)(profits.size() + 1) * quantile - 1;
     double expectedShortfall = 0;
     for(int i = 0; i < varIndex+1; ++i){
         expectedShortfall += profits[i];
@@ -39,10 +39,10 @@ double PortfolioSimResult::expectedShortfall(double confidence) const{
 }
 
 std::vector<int> PortfolioSimResult::varEvents(double quantile) const {
-    double v = var(1-quantile);
+    double v = var(quantile);
     std::vector<int> varEvents;
     for(int i = 0; i < m_profits.size(); ++i){
-        if(m_profits[i] < -v){
+        if(m_profits[i] <= -v){
             varEvents.push_back(i);
         }
     }
