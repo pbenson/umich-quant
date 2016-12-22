@@ -12,9 +12,12 @@
 std::default_random_engine MarketSimulation::generator;
 std::normal_distribution<double> MarketSimulation::standardNormalDistribution(0, 1);
 
-MarketSimulation::MarketSimulation(int size):m_weights(size) {
+MarketSimulation::MarketSimulation(int size, double lambda):m_weights(size), m_lambda(lambda) {
+    double sumOfPowersOfLambda = lambda == 1 ? size : (1 - pow(lambda, size + 1))/(1-lambda);
+    double ewmaWeight = 1 / sqrt(sumOfPowersOfLambda);
     for(int i = 0; i < size; ++i) {
-        m_weights[i] = standardNormalDistribution(generator);
+        m_weights[i] = standardNormalDistribution(generator) * ewmaWeight;
+        ewmaWeight *= lambda;
     }
 }
 

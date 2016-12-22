@@ -14,7 +14,7 @@
 
 class MarketSimulation {
 public:
-    MarketSimulation( int numberOfWeights );
+    MarketSimulation( int numberOfWeights, double lambda );
     
     const std::vector<double>& weights() const;
     
@@ -27,6 +27,7 @@ private:
     static std::normal_distribution<double> standardNormalDistribution;
     //Generates random numbers according to the Normal (or Gaussian) random number distribution
     std::vector<double> m_weights;
+    const double m_lambda;
 };
 
 #endif /* MarketSimulation_hpp */

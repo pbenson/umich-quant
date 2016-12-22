@@ -31,12 +31,12 @@ double Portfolio::value(const MarketScenario& scenario, const MarketSimulation& 
     return value;
 }
 
-std::vector<double> Portfolio::profits(const MarketScenario& scenario, int numOfHistoricalReturns, size_t numOfSims) const{
+std::vector<double> Portfolio::profits(const MarketScenario& scenario, int numOfHistoricalReturns, size_t numOfSims, double ewmaLambda) const{
     std::vector<double> profit_sim;
     
     const double todaysValue = value(scenario);
     for(int i = 0; i < numOfSims; ++i){
-        MarketSimulation sim(numOfHistoricalReturns);
+        MarketSimulation sim(numOfHistoricalReturns, ewmaLambda);
         const double tomorrowsValue = value(scenario,sim);
         profit_sim.push_back(tomorrowsValue-todaysValue);
     }
@@ -44,7 +44,7 @@ std::vector<double> Portfolio::profits(const MarketScenario& scenario, int numOf
     return profit_sim;
 }
 
-std::vector<PortfolioSimResult> Portfolio::simResultsByPosition(const MarketScenario& scenario, int numOfHistoricalReturns, size_t numOfSims) const{
+std::vector<PortfolioSimResult> Portfolio::simResultsByPosition(const MarketScenario& scenario, int numOfHistoricalReturns, size_t numOfSims, double ewmaLambda) const{
     //store values for each position
     std::vector<double> positionValues;
     for(auto pPosition : m_positions){
@@ -54,7 +54,7 @@ std::vector<PortfolioSimResult> Portfolio::simResultsByPosition(const MarketScen
     std::vector<PortfolioSimResult> results(m_positions.size());
     for(int simIndex = 0; simIndex < numOfSims; ++simIndex)
     {
-        const MarketSimulation sim(numOfHistoricalReturns);
+        const MarketSimulation sim(numOfHistoricalReturns, ewmaLambda);
         int positionIndex = 0;
         for(auto pPosition : m_positions){
             double pAndL = pPosition->value(scenario,sim)-positionValues[positionIndex];

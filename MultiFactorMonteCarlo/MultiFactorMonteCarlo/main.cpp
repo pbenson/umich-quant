@@ -34,9 +34,10 @@ int main(int argc, const char * argv[]) {
     std::cout << "AAPL variance = " << pApple->variance() << std::endl; //td::endl---flushes the output buffer
     
     int numberHistoricalReturns = market.numberHistoricalReturns();
-    MarketSimulation simulation0(numberHistoricalReturns);
+    double ewmaLambda = 0.9999;
+    MarketSimulation simulation0(numberHistoricalReturns, ewmaLambda);
     std::cout << "AAPL return = " << pApple->simulatedReturn(simulation0) << std::endl;
-    MarketSimulation simulation1(numberHistoricalReturns);
+    MarketSimulation simulation1(numberHistoricalReturns, ewmaLambda);
     
     Portfolio portfolio;
     portfolio.addPosition(std::make_shared<Security>(*market.marketFactor("AAPL")), 1000);
@@ -49,7 +50,7 @@ int main(int argc, const char * argv[]) {
     size_t numSims = 9999;
     double quantile=0.05;
     double confidence=1-quantile;
-    std::vector<PortfolioSimResult> positionResults = portfolio.simResultsByPosition(scenario, numberHistoricalReturns,numSims);    
+    std::vector<PortfolioSimResult> positionResults = portfolio.simResultsByPosition(scenario, numberHistoricalReturns,numSims, ewmaLambda);    
     PortfolioSimResult portfolioResults(positionResults);
     std::cout << "95% VaR = " << portfolioResults.var(confidence)<<std::endl;
     std::cout << "Expected Shortfall = " << portfolioResults.expectedShortfall(confidence) << std::endl;
