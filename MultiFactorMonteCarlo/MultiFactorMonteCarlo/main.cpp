@@ -33,8 +33,8 @@ int main(int argc, const char * argv[]) {
     const auto pApple = market.marketFactor("AAPL");
     std::cout << "AAPL variance = " << pApple->variance() << std::endl; //td::endl---flushes the output buffer
     
-    int numberHistoricalReturns = market.numberHistoricalReturns();
-    double ewmaLambda = 0.9999;
+    int numberHistoricalReturns = 252;//use one year
+    double ewmaLambda = 0.97;
     MarketSimulation simulation0(numberHistoricalReturns, ewmaLambda);
     std::cout << "AAPL return = " << pApple->simulatedReturn(simulation0) << std::endl;
     MarketSimulation simulation1(numberHistoricalReturns, ewmaLambda);

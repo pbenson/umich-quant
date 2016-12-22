@@ -28,7 +28,10 @@ const std::string& MarketFactor::name() const{
 }
 
 double MarketFactor::simulatedReturn(const MarketSimulation & sim) const{
-    return inner_product(std::begin(m_logReturns), std::end(m_logReturns), std::begin(sim.weights()), 0.0);
+    if(sim.weights().size() > m_logReturns.size() ) {
+        throw "In MarketFactor::simulatedReturn, not enought simulation weights for log returns";
+    }
+    return inner_product(std::begin(sim.weights()), std::end(sim.weights()), std::begin(m_logReturns), 0.0);
 }
 
 double MarketFactor::variance() const{

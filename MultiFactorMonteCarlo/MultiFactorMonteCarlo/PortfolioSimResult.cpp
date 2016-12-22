@@ -20,17 +20,28 @@ PortfolioSimResult::PortfolioSimResult(const std::vector<PortfolioSimResult>& po
     }
 }
 
+void PortfolioSimResult::validateQuantile(double quantile) const {
+    if(quantile < 1.0 / (m_profits.size() + 1) ) {
+        throw "in PortfolioSimResult::validateQuantile(), quantile too small. Must be at least 1.0 / (# sims + 1).";
+    }
+    if(quantile > m_profits.size() / (m_profits.size() + 1.0) ) {
+        throw "in PortfolioSimResult::validateQuantile(), quantile too large. Must be at most # sims / (# sims + 1).";
+    }
+}
+
 double PortfolioSimResult::var(double quantile) const{
+    validateQuantile(quantile);
     std::vector<double> profits(m_profits);
     std::sort(profits.begin(),profits.end());
-    size_t varIndex = (int)(profits.size() + 1) * quantile - 1;
+    size_t varIndex = (profits.size() + 1) * quantile - 1;
     return -profits[varIndex];
 }
 
 double PortfolioSimResult::expectedShortfall(double quantile) const{
+    validateQuantile(quantile);
     std::vector<double> profits(m_profits);
     std::sort(profits.begin(),profits.end());
-    size_t varIndex = (int)(profits.size() + 1) * quantile - 1;
+    size_t varIndex = (profits.size() + 1) * quantile - 1;
     double expectedShortfall = 0;
     for(int i = 0; i < varIndex+1; ++i){
         expectedShortfall += profits[i];

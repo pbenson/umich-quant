@@ -27,6 +27,8 @@ public:
     
 private:
     std::vector<double> m_profits;
+    
+    void validateQuantile(double quantile) const;
 };
 
 #endif /* PortfolioSimResult_hpp */
