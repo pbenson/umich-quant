@@ -57,3 +57,5 @@ DerivedData/
 *.vcxproj
 
 *.xcbkptlist
+
+*.h5
