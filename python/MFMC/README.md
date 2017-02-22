@@ -1,0 +1,1 @@
+You will need data from  <a href="https://quantquote.com/historical-stock-data">QuantQuote</a>. Download the free S&P 500, unzip it, and move the <code>daily</code> directory into your MFMC directory.
