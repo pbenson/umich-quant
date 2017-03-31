@@ -82,6 +82,15 @@ class MarketUniverse:
     def initializeFromTickers(self, tickers):
         self.initializeFromFileNames(['table_' + ticker + '.csv' for ticker in tickers])
 
+    def marketForTickers(self, tickers, startDate, endDate, decay):
+        tickerToMarketFactorDict = collections.OrderedDict()
+        for ticker in tickers:
+            tickerToMarketFactorDict[ticker] = self.tickerToMarketFactorDict[ticker]
+        return Market(tickerToMarketFactorDict, startDate, endDate, decay)
+
+    def marketForAllTickers(self, startDate, endDate, decay):
+        return self.marketForTickers(self.tickerToMarketFactorDict.keys(), startDate, endDate, decay)
+
 class Market:
     def __init__(self, tickerToMarketFactorDict, startDate, endDate, decay):
         self.tickerToMarketFactorVectorDict = collections.OrderedDict()
@@ -94,12 +103,21 @@ class Market:
             self.tickerToMarketFactorVectorDict[ticker] = mfv
             self.currentPrices.append(marketFactor.mostRecentPrice())
 
-    def simulation(self):
+    def simulated_returns_dict(self):
         noise = np.random.normal(loc=0, scale=1.0, size=self.numDays)
         tickerToReturnDict = {}
         for ticker, mfv in self.tickerToMarketFactorVectorDict.items():
             tickerToReturnDict[ticker] = np.dot(mfv.weightedReturns, noise)
         return tickerToReturnDict
+
+    def simulated_returns_list(self):
+        return self.simulated_returns_dict().values()
+
+    def simulated_prices_list(self):
+        return np.multiply(self.currentPrices, np.exp(self.simulated_returns_list()))
+
+    def tickers(self):
+        return self.tickerToMarketFactorVectorDict.keys()
 
     def __repr__(self):
         return 'Market(' + str(self.tickerToMarketFactorVectorDict) + ')'
